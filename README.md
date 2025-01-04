@@ -123,6 +123,7 @@ mednafen GBA2TE.cue
 I didn't bother uploading source code to github until I liked the state this hack was in (but I really wish I didn't get stumped at the last inch, man I suck at dealing with compressed archives), and thus I released a couple beta versions before this github repo. For completeness sake, here is a hash of these versions to help identify which old version you have.
 
 0.01beta: `GBA2TE_0.01` `SHA-1: FDDC4E31C3DA2AC68CE48AC63321B8470A94F923`
+
 0.02beta: `GBA2TE_0.01` `SHA-1: C8A928D0C20460AE721EE5772CCC882C4534A49B`
 
 ## Credits

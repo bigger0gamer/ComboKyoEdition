@@ -1,29 +1,19 @@
 # ComboKyo Edition
 This is a ROM hack of Gundam Battle Assault 2 (USA) with the following features:
 
-- 60FPS gameplay enabled by default. You can return to 30FPS gameplay by going into the options and setting "Pilot Display" to "Off".
-  - Pilot Display is now forced off, regardless of what the options menu says.
-- Hidden mechs are selectable in 2P VS, in the same fashion as you do for ComboKyo's hidden mech gameshark cheats. They should only be available in 2P VS to my knowledge.
-  - When you pick any mobile suit and are at the handicap screen, press one of the following buttons to pick the given mobile suit. A voice line matching the suit name should play.
-   - L1: The O
-   - L2: Zed Gundam
-   - R1: Qubeley
-   - R2: Hamma Hamma
-- Player 2 input lag fix
-  - Player 2 normally has an extra frame of input lag that Player 1 doesn't have when the game is running at 60PFS. In the vanilla game, this usually isn't that important as this only occurs in menus, but becomes pretty important when gameplay is being played at 60FPS too.
-- Random stage suggestion at stage select. Like 60FPS, this can be disabled in the options menu by setting "Hit Display" to "Off".
-  - Hit Display is now forced on, regardless of what the options menu says.
-- Everything unlocked by deafult (main menu modes, MS in Street, MS in other modes, stages, sound test). If you find anything that isn't unlocked, or the game crashes in any single player modes, let me know and I'll investigate.
-- "Best Theme" will play if either play is Ball, or the unused "Acguy Theme" will play when either player is Acguy (Acguy theme takes priority over Best theme).
-- The game ID has been changed to `GBA2_TEX.XX` in releases, with X.XX being replaced with a given version (Ex: `0.03` represents 0.03beta).
+- 60FPS Gameplay
+- "Hidden Mechs" in 2P VS
+- Player 2 Input Lag Fix
+- Random Stage Suggestion
+- Random Mobile Suit (Select Button)
+- Everything Unlocked (No Save File Needed)
+- Random Music (Optional, Not Default)
+- Expanded Game Options Menu!
+- Pilot Display Off By Default
+- The game ID has been changed to `GBA2_TEX.XX` in releases, with X.XX being replaced with a given version (Ex: `1.04` represents Version 1 Release Canidate 4).
   - If built from source, the game ID will remain as `SLUS_014.18` unless you change it manually.
 
-Only thing not implemented is texture edits of any kind. Whenever the hell I can figure out how to get texture data into and out of the games archive format, I plan to edit:
-- Pilot Display and Hit Display to 60FPS and Random Stage respectively, to match their new functionality.
-- A cheat sheet for hidden mechs in the 2P VS menu (probably replacing "Versus 2P in the corner).
-- Another texture somewhere saying "ComboKyo Edition", to denote the use of this ROM hack.
-
-You can find a patch for this ROM hack under the releases section, building is not necessary unless you'd like to make further modifications to the game. 60FPS gameplay is best enjoyed in duckstation with a 180% CPU overclock applied.
+You can find a patch for this ROM hack under the [releases section](https://github.com/bigger0gamer/ComboKyoEdition/releases), building is not necessary unless you'd like to make further modifications to the game. 60FPS gameplay is best enjoyed in duckstation with a 180% CPU overclock applied.
 
 ## Dependencies
 
@@ -31,7 +21,8 @@ If you'd like to build this ROM hack from source, you'll need the following depe
 
 - [armips](https://github.com/Kingcom/armips) v0.11 or newer
 - [psximager](https://github.com/cebix/psximager) v2.2 or newer
-- A copy of Gundam Battle Assault 2 matching the below MD5 hashs for each track, and merged into a single bin file. If your copy has a bin file for each track, then you'll need to merge them with [binmerge](https://github.com/putnam/binmerge). A mismatch on the second track shouldn't prevent a successful build, but it's listed here for completeness anyways.
+- [binmerge](https://github.com/putnam/binmerge), only needed for initial setup of the build environment because psxrip is stinky doo doo that relies on sloppy assumptions.
+- A copy of Gundam Battle Assault 2 matching the below MD5 hashs for each track. A mismatch on the second track shouldn't prevent a successful build, but it's listed here for completeness anyways.
   - Track 1 `.bin`: `3000a1b7ff191c1efe1aaf18f79a0ed5`
   - Track 2 `.bin`: `2d7b5e8e94a91bf5423b2356f6a34863`
   - [Hashes obtained from Redump.org](http://redump.org/disc/6795/)
@@ -46,34 +37,11 @@ Listed are just versions used to build the release patch. Using older versions i
 
 This guide assumes you are running some flavor of linux, and that you already have the dependencies installed. Alter these commands for your OS as necessary.
 
-Copy a bin/cue of GBA2 into the `build env` directory named `GBA2.bin` and `GBA2.cue` (please make sure the cue correctly lists `GBA2.bin` in a text editor). Then open a terminal in the `build env` directory and run the following command:
-
-```
-psxrip GBA2.cue
-```
-
-When done, this should create a new directory, `GBA2`, containing all the data on the disc. Your directory tree should look like this when done.
-
-```
-/src
--*Source files and shit*
-/build env
--GBA2.bin
--GBA2.cat
--GBA2.cue
--GBA2.sys
--/GBA2
---SLUS_014.28
---SYSTEM.CNF
---/DATA
----*game data*
---/XA
----*game data*
-```
+Copy a bin/bin/cue of GBA2 into the `build env` directory named `Gundam Battle Assualt 2 (USA) (Track 1).bin`, `Gundam Battle Assualt 2 (USA) (Track 2).bin` and `Gundam Battle Assualt 2 (USA).cue`. Then simply run `extract.sh`. This will automatically binmerge your copy of the game, extract all of the game data to a folder named `GBA2`, and copy your original ROM into a folder named `cleanROM`. You will need the Track 2 bin file for building, so don't remove it.
 
 ### Changing the Title ID (Optional)
 
-If you'd like to change the game' Title ID, you should do so now. This was done in the release patch for two reasons: To make the game stand out on duckstation's game list from the vanilla game, and to met Arkadyzja's requirements for having a ROM hack added to it's supported game list.
+If you'd like to change the game's Title ID, you should do so now. This was done in the release patch for two reasons: To make the game stand out on duckstation's game list from the vanilla game, and to met Arkadyzja's unique title ID requirement for having a ROM hack added to it's supported game list.
 
 If neither of this matters to you, you may skip this step, but I recommend making a backup copy of `SLUS_014.18`, as armips will directly edit this file otherwise, and any change made will be irreverable without re-extracting it from the original bin/cue again (annoying).
 
@@ -109,26 +77,21 @@ All that's left to do is `cd` your way to `/src` and run the `build.sh` script p
 
 ```
 armips ComboKyo.asm
-{
 cd ../build\ env/
-psxbuild -c GBA2.cat GBA2TE.bin
-mednafen GBA2TE.cue
-} &> /dev/null
+psxbuild -c GBA2.cat GBA2TE.bin &> /dev/null
+cp cleanROM/Gundam\ Battle\ Assault\ 2\ \(USA\)\ \(Track\ 2\).bin GBA2TE\ \(Track\ 2\).bin
+echo "FILE \"GBA2TE (Track 2).bin\" BINARY" >> GBA2TE.cue
+echo "  TRACK 02 AUDIO" >> GBA2TE.cue
+echo "    INDEX 00 00:00:00" >> GBA2TE.cue
+echo "    INDEX 01 00:02:00" >> GBA2TE.cue
+mednafen GBA2TE.cue &> /dev/null
 ```
 
-`armips ComboKyo.asm` builds all of the code into the game data, and `psxbuild -c GBA2.cat GBA2TE.bin` builds that back into a new bin/cue named `GBA2.bin`/`GBA2.cue` for use in an emulator or disc burning software. Feel free to replace `mednafen GBA2TE.cue` with the command for your preferred emulator. You can change the new file name if you'd like, but if you do not specify a new file name, psximager will overwrite the original image. Keeping a backup of the original image somewhere else is advised, just in case. I also choose to encasulate all the commands after armips into a pipe to null because during development, I didn't care for those commands making a verbose mess out of my terminal output so I could focus on errors from armips, but they are not necessary.
-
-## Pre-github releases
-
-I didn't bother uploading source code to github until I liked the state this hack was in (but I really wish I didn't get stumped at the last inch, man I suck at dealing with compressed archives), and thus I released a couple beta versions before this github repo. For completeness sake, here is a hash of these versions to help identify which old version you have.
-
-0.01beta: `GBA2TE_0.01` `SHA-1: FDDC4E31C3DA2AC68CE48AC63321B8470A94F923`
-
-0.02beta: `GBA2TE_0.01` `SHA-1: C8A928D0C20460AE721EE5772CCC882C4534A49B`
+`armips ComboKyo.asm` builds all of the code into the game data, and `psxbuild -c GBA2.cat GBA2TE.bin` builds that back into a new bin/bin/cue named `GBA2TE.bin`/`GBA2TE (Track2).bin`/`GBA2TE.cue` for use in an emulator or disc burning software. Feel free to replace `mednafen GBA2TE.cue` with the command for your preferred emulator. You can change the new file name if you'd like, but if you do not specify a new file name, psximager will overwrite the original image. Keeping a backup of the original image somewhere else is advised, just in case. I also choose to encasulate all the commands after armips into a pipe to null because during development, I didn't care for those commands making a verbose mess out of my terminal output so I could focus on errors from armips, but they are not necessary.
 
 ## Credits
 
-ComboKyo - for having completed 90% of the reverse engineering necessary for this project before I started this project including stuff like 60FPS gameplay, unlock everything, and for having made the "Hidden Mechs Selectable in 2P VS" Gameshark cheat code. This project wouldn't be possible without him, and primarily features his work on gameshark cheats, and so I've named this hack after him.
+ComboKyo - for having completed 90% of the reverse engineering necessary for this project before I started this project including stuff like 60FPS gameplay, unlock everything, and for having made the "Hidden Mechs Selectable in 2P VS" Gameshark cheat code. Hell, it's his insight and researching prowess that lead to the breakthough necessary to get the ball rolling on a proper V1 release, unlike the sad "functionally complete but unpolished" release that was v0.03, to say nothing about the further contributions to the latest version. This project wouldn't be possible without him, and primarily features his work on gameshark cheats, and so I've named this hack after him.
 
 Kingcom - for making armips. Holy *fuck* is this such a great and powerful tool for PS1 ROM hacking. It is far and away better than what I was doing before when making DRA True OG Edition, and I never could have made such a good tool on my own. Thank you.
 

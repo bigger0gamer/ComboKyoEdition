@@ -1,0 +1,13 @@
+Put your GBA2 ROM here, then run extract.sh to setup this directory.
+
+Gundam Battle Assault 2 (USA).cue
+Gundam Battle Assault 2 (USA) (Track 1).bin
+Gundam Battle Assault 2 (USA) (Track 2).bin
+
+Track 1 MD5: 3000a1b7ff191c1efe1aaf18f79a0ed5
+Track 2 MD5: 2d7b5e8e94a91bf5423b2356f6a34863
+
+
+You will unfortunetly need binmerge to setup the build environment, because psxrip is a stinky doo doo that doesn't know how to read a cue sheet or properly deal with a multitrack disc stored as separate bin files, and just runs about assuming there's only one bin file named the same as the cue file and fails to rip when simply renaming the first track bin file.
+
+A clean unmodified ROM will be preserved in a folder called "cleanROM" for future hacking reference, but if you don't want to keep it there you can get rid of the cue file and the first track's bin file, but you'll need to keep the second track's bin file for build.sh to make a properly complete ROM. Without it, you'll be missing an audio track in the final build and will have to manually copy the second track bin file over from a clean ROM and edit the cue file accordingly.

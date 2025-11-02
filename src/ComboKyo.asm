@@ -2,6 +2,7 @@
 ; AKA GBA2TE
 ; created by Yuri Bacon, with much help from ComboKyo
 ; build using armips v11.0
+; ass ass ass ass ass
 .psx
 
 

@@ -1,8 +1,15 @@
 ; Gundam Battle Assualt 2: ComboKyo Edition
 ; AKA GBA2TE
 ; created by Yuri Bacon, with much help from ComboKyo
-; build using armips v11.0
-; ass ass ass ass ass
+; build using armips v11.0\
+;
+; Stealth Edit:
+;  - Keeps stock game ID of SLUS-01418
+;  - Removes custom options menu stuff
+;  - Removes "COMBOKYO" from Versus 2P menu
+;  - Forces 60FPS, Random Stage, & "Community" Music
+;  - Unfort, Pilot Display is on by default again, oh well
+;  - Otherwise, same shit really. This was just easier than fucking around with GS cheats
 .psx
 
 
@@ -14,7 +21,7 @@
 
 ; SLUS_014.18, anything that needs to be inserted into the main executable or payload goes here
 ; also contains any and all RAM addresses that need to be referenced by any code
-.openfile "../build env/GBA2/SLUS_014.18","../build env/GBA2/GBA2_TED.EV",0x8000F800
+.openfile "../build env/GBA2/SLUS_014.18.bak","../build env/GBA2/SLUS_014.18",0x8000F800
 
   ; First, we need to start with any data that needs to be modified in SLUS_014.04 itself
   ; Most of this is just jumps into the payload, so you'll want to find the Payload half
@@ -25,12 +32,11 @@
   .include "exe/RandomMobileSuitExe.asm"
   .include "exe/EverythingUnlockedExe.asm"
   .include "exe/GamesharkCodesExe.asm"  ; + custom vars & some string stuff
-  .include "exe/ExpandedOptionsMenuExe.asm"
   
   ; Invert Pilot Display logic
   ; This is just changing the original instruction from bne to beq
-  .org 0x80040720
-    beq v0,r0,0x80040744
+  ;.org 0x80040720
+  ;  beq v0,r0,0x80040744
   
   
   ; As most of the game's code uses fixed jump locations, the code can't be resized,
@@ -43,12 +49,10 @@
   ; If you need to give a RAM address a label, put it somewhere before MovePayload.asm
   .include "payload/StringTablePayload.asm"
   .include "payload/InputFixPayload.asm"
-  .include "payload/60fpsPayload.asm"
   .include "payload/RandomStagePayload.asm"
   .include "payload/RandomMobileSuitPayload.asm"
   .include "payload/EverythingUnlockedPayload.asm"
   .include "payload/GamesharkCodesPayload.asm"
-  .include "payload/ExpandedOptionsMenuPayload.asm"
   
   ; The Payload in its entirety, including the code to move the payload into the needed place in RAM,
   ; can only be so long, because the BIOS will only load so much data from the main exe.

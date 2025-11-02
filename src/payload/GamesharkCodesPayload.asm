@@ -29,7 +29,6 @@ GamesharkCodes:
   .include "payload/gameshark/RNGPayload.asm"
   .include "payload/gameshark/HiddenMechPayload.asm" :: EndOfHiddenMech:
   .include "payload/gameshark/RandomMusicPayload.asm"
-  .include "payload/gameshark/StringReplacerPayload.asm" :: EndOfStringReplacer:
   
   ; and now that we're done with this whole method, let's restore the register state
   lw a0,lo(a0TempAddress)(at)

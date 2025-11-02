@@ -3,7 +3,7 @@
 ; Unlock Everything
 .org 0x8001C23C
   j UnlockEverything
-  .org 0x8001C244 :: UnlockEverythingReturn:
+.org 0x8001C244 :: UnlockEverythingReturn:
 
 ; Fix Survival Mode Crash
 ; Instead of bothering to fill out a table of valid opponents,

@@ -20,7 +20,7 @@ You can find a patch for this ROM hack under the [releases section](https://gith
 If you'd like to build this ROM hack from source, you'll need the following dependencies:
 
 - [armips](https://github.com/Kingcom/armips) v0.11 or newer
-- [psximager](https://github.com/cebix/psximager) v2.2 or newer
+- [mkpsxiso](https://github.com/Lameguy64/mkpsxiso) v2.10 or newer
 - [binmerge](https://github.com/putnam/binmerge), only needed for initial setup of the build environment because psxrip is stinky doo doo that relies on sloppy assumptions.
 - A copy of Gundam Battle Assault 2 matching the below MD5 hashs for each track. A mismatch on the second track shouldn't prevent a successful build, but it's listed here for completeness anyways.
   - Track 1 `.bin`: `3000a1b7ff191c1efe1aaf18f79a0ed5`

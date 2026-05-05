@@ -10,10 +10,10 @@
 ; unused RAM: 0x800D6580-0x800DF230 (0x8CB0)
 ; These were quick and dirty notes I made for MovePayload, and are too helpful to remove
 
-
 ; SLUS_014.18, anything that needs to be inserted into the main executable or payload goes here
+; The output file "TITLE_ID" should be replaced by build.sh with a sed command at build time (see build.sh for more info)
 ; also contains any and all RAM addresses that need to be referenced by any code
-.openfile "../build env/GBA2/SLUS_014.18","../build env/GBA2/GBA2_TED.EV",0x8000F800
+.openfile "../build env/GBA2/SLUS_014.18","../build env/GBA2/TITLE_ID",0x8000F800
 
   ; First, we need to start with any data that needs to be modified in SLUS_014.04 itself
   ; Most of this is just jumps into the payload, so you'll want to find the Payload half

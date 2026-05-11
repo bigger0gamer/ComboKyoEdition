@@ -6,7 +6,7 @@ TITLE_ID='GBA2_TED.EV'
 
 # armips
 sed s/TITLE_ID/$TITLE_ID/ ComboKyo.asm > temp.asm
-armips temp.asm
+armips temp.asm -sym fuck.sym
 rm temp.asm
 
 # edit SYSTEM.CNF + .xml && mkpsxiso
@@ -28,4 +28,4 @@ mv "GBA2/SYSTEM.bak" "GBA2/SYSTEM.CNF"
 mv "GBA2.bak" "GBA2.xml"
 
 # open output in emulator
-mednafen GBA2TE.cue &> /dev/null
+mednafen temp.cue &> /dev/null

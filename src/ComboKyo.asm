@@ -25,6 +25,7 @@
   .include "exe/EverythingUnlockedExe.asm"
   .include "exe/GamesharkCodesExe.asm"  ; + custom vars & some string stuff
   .include "exe/ExpandedOptionsMenuExe.asm"
+  .include "exe/ExpandedMusicExe.asm"
   
   ; Invert Pilot Display logic
   ; This is just changing the original instruction from bne to beq
@@ -48,6 +49,7 @@
   .include "payload/EverythingUnlockedPayload.asm"
   .include "payload/GamesharkCodesPayload.asm"
   .include "payload/ExpandedOptionsMenuPayload.asm"
+  .include "payload/ExpandedMusicPayload.asm"
   
   ; The Payload in its entirety, including the code to move the payload into the needed place in RAM,
   ; can only be so long, because the BIOS will only load so much data from the main exe.

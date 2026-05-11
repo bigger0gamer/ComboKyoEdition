@@ -1,18 +1,16 @@
 .psx
 
-.org 0x801FE100 :: PayloadDestination:
-.org 0x8008C76C :: MovePayloadReturn:
+; Update first game instruction
+.orga 0x10       :: .word MovePayload
+.org  0x8008C764 :: MovePayloadReturn:
 
+; Where the code will actually live at run time
+.org 0x801FE0F0 :: PayloadDestination:
 
-; This is the first instruction the game runs after the BIOS hands over control.
-; We'll replace the first 2 instructions to jump to extra space in the exe
-; before anything else gets loaded in or run.
-.org 0x8008C764
-  j MovePayload
-  lui v0,hi(Payload)
 
 ; Main function!
 .org 0x800A6030 :: MovePayload:
+  lui v0,hi(Payload)
   addiu v0,v0,lo(Payload)  ; v0 = start of payload
   addiu v1,v0,0x7D0        ; v1 = end of payload (fixed size based on maximum main exe size)
   li a0,PayloadDestination ; a0 = RAM location to move payload to
@@ -23,12 +21,12 @@
   sw a1,0x0000(a0)   ; hey, a1 loaded just in time to save it!
   sw a2,0x0004(a0)   ; a2 too!
   addiu v0,v0,0x8    ; increment v0 by 2 words
+  addiu a0,a0,0x8    ; a0 too
   sltu at,v0,v1      ; we there yet?
   bne at,r0,@@StartOfLoop  ; no? Ugh, we have to go back again
-  addiu a0,a0,0x8    ; a0 too
-  lui v0,0x800A      ; original first instruction
+  nop
   j MovePayloadReturn  ; jump back to original code
-  addiu v0,v0,0x6030 ; original second instruction
+  nop
 
 
 Payload:

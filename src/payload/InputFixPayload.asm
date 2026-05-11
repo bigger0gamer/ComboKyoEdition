@@ -7,7 +7,6 @@
 
 InputFix:
   bne a2,r0,@@Skip                   ; if reading player 1 inputs, skip the input fix
-  nop
   lui at,hi(Player2TrueInput)
   lbu v1,lo(Player2TrueInput)(at)    ; read player 2 "raw" inputs
   j InputFixReturn

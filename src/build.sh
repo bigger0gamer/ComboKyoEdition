@@ -28,4 +28,4 @@ mv "GBA2/SYSTEM.bak" "GBA2/SYSTEM.CNF"
 mv "GBA2.bak" "GBA2.xml"
 
 # open output in emulator
-mednafen temp.cue &> /dev/null
+mednafen GBA2TE.cue &> /dev/null

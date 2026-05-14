@@ -16,12 +16,10 @@
   li a0,PayloadDestination ; a0 = RAM location to move payload to
   
   @@StartOfLoop:
-  lw a1,0x0000(v0)   ; load first 4 bytes of payload into a1
-  lw a2,0x0004(v0)   ; while we wait on a1, we load the next 4 bytes into a2
+  lw a1,0x0000(v0)   ; load 4 bytes of payload into a1
+  addiu v0,v0,0x4    ; increment v0 by word
   sw a1,0x0000(a0)   ; hey, a1 loaded just in time to save it!
-  sw a2,0x0004(a0)   ; a2 too!
-  addiu v0,v0,0x8    ; increment v0 by 2 words
-  addiu a0,a0,0x8    ; a0 too
+  addiu a0,a0,0x4    ; a0 too
   sltu at,v0,v1      ; we there yet?
   bne at,r0,@@StartOfLoop  ; no? Ugh, we have to go back again
   nop

@@ -114,9 +114,8 @@ StringCopy:
 ; v0: half pointer
 ; a0: pointer base address
 MenuTextSpecialPointers:
-  nop
-  andi at,v0,0xE000
   ori v1,r0,0xE000
+  andi at,v0,0xE000
   bne v1,at,@@SkipSpecialPointer
   nop
   lui a0,0x801F

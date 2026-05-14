@@ -27,9 +27,8 @@
 .org 0x8003187C :: ExpandedOptionsMenuNotChangedReturn:
 .org 0x8003199C :: ExpandedOptionsMenuIsChangedReturn:
 
-.org 0x80031A60
+.org 0x80031A64
   j ExpandedOptionsMenuCopyToLowerRAM  ; adds persistent custom variable saving when changing settings
-  lhu v0,0x308C(a0)
 .org 0x80031A68 :: ExpandedOptionsMenuCopyToLowerRAMReturn:
 
 .org 0x800316D4

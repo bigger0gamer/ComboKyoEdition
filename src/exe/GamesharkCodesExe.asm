@@ -1,6 +1,8 @@
 ; "Gameshark Codes": Hidden Mech & Music Replacements (& now more!)
 .org 0x80084664
   j GamesharkCodes
+  sw v0,0x502c(at)  ; original instruction
+.org 0x8008464C
   lui at,0x800a  ; original instruction
 .org 0x8008466C :: GamesharkCodesReturn:
 

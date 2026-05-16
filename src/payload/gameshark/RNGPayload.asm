@@ -1,34 +1,22 @@
 .psx
 
-; Random MS RNG
-lh v1,lo(RandomMechRNGX)(at)  ; load RNG XY from RAM
-lh v0,lo(RandomMechRNGY)(at)
-
-addi v1,v1,1                  ; RNG X++
-slti s1,v1,6
-bne s1,r0,@@SkipRollover        ; if(RNG X >= 6)
-nop
-  lui v1,0                      ; RNG X = 0
-  addi v0,v0,1                  ; RNG Y++
-  slti s1,v0,5
-  bne s1,r0,@@SkipRollover      ; if(RNG Y >= 5)
-  nop
-    lui v0,0                    ; RNG Y = 0
-
-@@SkipRollover:
-sh v1,lo(RandomMechRNGX)(at)  ; save RNG XY to RAM
-sh v0,lo(RandomMechRNGY)(at)
+; It loads a word (4 bytes) from RAM address `0x800E0980`,
+; multiplies that by the static number `0x41C64E6D` (keeping only the lower word of the result),
+; then adds the static number `0x3039`,
+; saves the final result back to RAM address `0x800E0980`,
+; and finally returns to the calling code with the final result in register `a0`,
+; as well that result shifted 16 bits left and the 16th bit stripped off in register `v0`.
+; It is called simply by `jal 0x80077B04`, no arguments necessary.
+; It only uses registers `at` (to save the result back to RAM),
+; `v1` (contains `0x41C64E6D`), `v0`, and `a0`.
 
 
-; Random Music RNG
-lh v0,lo(RandomMusicRNG)(at)  ; load musicRNG from RAM
-nop
-
-addi v0,v0,1                  ; musicRNG++
-slti s1,v0,0xB                ; if(musicRNG > A)
-bne s1,r0,@@SkipMusicReset
-nop
-addi v0,r0,1                  ; then musicRNG = 1
-
-@@SkipMusicReset:
-sh v0,lo(RandomMusicRNG)(at)  ; save musicRNG
+li t1,RandomMechRNGY
+jal RNGWrapper
+addi t0,r0,5
+addi t1,t1,2
+jal RNGWrapper
+addi t0,r0,6
+addi t1,t1,2
+jal RNGWrapper
+addi t0,r0,0xB

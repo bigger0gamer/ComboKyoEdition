@@ -12,6 +12,7 @@ addi v0,v0,1
 beq v0,r0,@@SkipAcguyTheme
 lh v1,lo(RandomMusicRNG)(at)
 lui v0,hi(MusicID)
+addi v1,v1,1
 j @@SkipAcguyTheme
 sh v1,lo(MusicID)(v0)
 

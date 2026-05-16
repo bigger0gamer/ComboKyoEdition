@@ -9,7 +9,7 @@ RandomMobileSuit:
   lui v0,hi(RandomMechRNGY)
   lw v0,lo(RandomMechRNGY)(v0)
   nop
-  sw v0,0x000(v1)
+  sw v0,0x0000(v1)
   
   @@Skip:
   j RandomMobileSuitReturn

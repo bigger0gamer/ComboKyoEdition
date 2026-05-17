@@ -35,28 +35,11 @@
 .org 0x801FE010 :: RandomMechRNGY:
 .org 0x801FE012 :: RandomMechRNGX:
 .org 0x801FE014 :: RandomMusicRNG:
-;.org 0x801FE016 :: 
-
-.org 0x801FE00C :: TempReturnAddress:  ; This will keep the contents of ra safe while I use jals.
-.org 0x801FE018 :: t0TempAddress:
-.org 0x801FE01C :: t1TempAddress:
-.org 0x801FE020 :: t2TempAddress:
-.org 0x801FE024 :: t3TempAddress:
-.org 0x801FE028 :: t4TempAddress:
-.org 0x801FE02C :: t5TempAddress:
-.org 0x801FE030 :: t6TempAddress:
-.org 0x801FE034 :: t7TempAddress:
-.org 0x801FE038 :: a0TempAddress:
 
 .org 0x801FE000 :: MenuTextSpecialPointersBaseAddress:
 
 ; original strings
 .org 0x801EA9B4 :: Versus2P:
-.org 0x801BB2F2 :: PilotDisplayOn:
-.org 0x801BB2EE :: PilotDisplayText:
-.org 0x801BB2FA :: PilotDisplayTextTwo:
-.org 0x801BB320 :: HitDisplayText:
-.org 0x801BB327 :: HitDisplayTextTwo:
 .org 0x801EABB4 :: TheOTexture:
 
 ; string pointers

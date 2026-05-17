@@ -11,11 +11,6 @@ nop
 
 
 ; Time for all the magic fun fun!
-; Versus 2P -> ComboKyo replacment
-lui v0,hi(Versus2P)
-addi v0,v0,lo(Versus2P)
-jal StringCopy
-addi v1,at,lo(ComboKyoString)
 
 ; Game Options Menu Expanded Pointers List
 lui v0,hi(GameOptionsEightName)
@@ -42,11 +37,6 @@ lui v0,hi(GameOptionsThreeSelections)
 addi v0,v0,lo(GameOptionsThreeSelections)
 jal StringCopy
 addi v1,at,lo(SwappedPilotDisplay)
-
-lui v0,hi(GameOptionsFourSelections)
-addi v0,v0,lo(GameOptionsFourSelections)
-jal StringCopy
-addi v1,at,lo(RenamedHitDisplay)
 
 ; now time to set StringsReplaced to 1 so we don't do this again for a while
 addi v0,r0,0x1

@@ -1,9 +1,18 @@
 .psx
 
+; s1 destination
+; s1     - XA Channel
+; s1 + 4 - Starting Sector (need stride added, will bake it) (also needs 0x1844 offset added?)
+; s1 + 8 - Sector Length
+
 ExpandedMusic:
   li s0,ExpandedMusicTable
-  sll at,a1,4
-  sll a1,a1,2
-  add a1,a1,at
+  sll a1,a1,3   ; music ID * 8
+  add s0,s0,a1  ; index into table
+  lw v1,0(s0)   ; load starting sector
+  lhu v0,4(s0)  ; load sector length
+  sw v1,4(s1)   ; save starting sector
+  sw v0,8(s1)   ; save sector length
+  lhu v1,6(s0)  ; load XA channel
   j ExpandedMusicReturn
-  add s0,s0,a1
+  sw v1,0(s1)   ; save XA channel

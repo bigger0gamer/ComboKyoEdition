@@ -1,8 +1,8 @@
 .psx
 
 ; Check to see if were in the menu, and haven't replaced strings yet
-lui v0,hi(MenuCanary)
-lh v0,lo(MenuCanary)(v0)
+lui t0,hi(MenuCanary)
+lh v0,lo(MenuCanary)(t0)
 lh v1,lo(StringsReplaced)(at)
 beq v0,r0,@@Skip                 ; if not in menu, skip
 nop

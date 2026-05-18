@@ -19,4 +19,4 @@ jal RNGWrapper
 addi t0,r0,6
 addi t1,t1,2
 jal RNGWrapper
-addi t0,r0,0xB
+addi t0,r0,0xB+6

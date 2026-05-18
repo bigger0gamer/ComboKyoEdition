@@ -10,7 +10,6 @@
   lui v0,0
 
 
-;.org 0x80018944 :: ExpandedMusicReturn:
 .org 0x80018978 :: ExpandedMusicReturn:
 .org 0x80018934
   j ExpandedMusic

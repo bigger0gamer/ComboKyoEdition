@@ -70,7 +70,7 @@ ExpandedMusicTable:
 ; Song 1
 .byte 0x39, 0xA3, 0,0
 .byte 0x70, 0x76
-.byte 7,0
+.byte 5,0
 
 ; Song 2
 .byte 0x10, 0xA5, 0,0

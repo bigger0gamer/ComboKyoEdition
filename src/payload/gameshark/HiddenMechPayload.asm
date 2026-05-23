@@ -2,7 +2,7 @@
 
 lui v0,hi(MenuCanary)
 lh v0,lo(MenuCanary)(v0)   ; if not in menu
-lui at,hi(MusicID)
+lui at,hi(RandomMusicRNG)
 beq v0,r0,EndOfHiddenMech  ; then skip hidden mech codes
 
 

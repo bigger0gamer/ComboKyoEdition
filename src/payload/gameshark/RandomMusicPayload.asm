@@ -15,9 +15,10 @@ j @@SaveMusicReplacement
 addi v0,v0,1
 
 @@CharacterMusic:
-lui v0,hi(Player1CharacterID)
+lui v0,hi(Player2CharacterID)
 lh v0,lo(Player2CharacterID)(v0)
 nop
+addi v0,v0,0xB
 
 @@SaveMusicReplacement:
 sh v0,lo(MusicID)(v1)

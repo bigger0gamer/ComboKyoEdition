@@ -6,7 +6,15 @@
 ; s1 + 8 - Sector Length
 
 ExpandedMusic:
-  li s0,ExpandedMusicTable
+  ; validate music ID
+  slti s0,a1,NumberSongs
+  bne s0,r0,@@ValidTrack
+  lui s0,hi(ExpandedMusicTable)
+  
+  lui a1,0
+  
+  @@ValidTrack:
+  addi s0,s0,lo(ExpandedMusicTable)
   sll a1,a1,3   ; music ID * 8
   add s0,s0,a1  ; index into table
   lw v1,0(s0)   ; load starting sector

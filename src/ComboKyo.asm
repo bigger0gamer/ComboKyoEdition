@@ -15,6 +15,9 @@
 ; also contains any and all RAM addresses that need to be referenced by any code
 .openfile "../build env/GBA2/SLUS_014.18","../build env/GBA2/TITLE_ID",0x8000F800
 
+  ; An easy stand in for the number of custom songs added
+  NumberSongs equ 6
+
   ; First, we need to start with any data that needs to be modified in SLUS_014.04 itself
   ; Most of this is just jumps into the payload, so you'll want to find the Payload half
   ; for each of these to make sense.

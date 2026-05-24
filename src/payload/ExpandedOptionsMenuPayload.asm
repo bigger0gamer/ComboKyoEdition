@@ -3,16 +3,16 @@
 ExpandedOptionsMenuCheckIfChanged:
   ;lhu v0,0x308C(a0)
   lui at,hi(RandomStageSetting)
-  lh v1,lo(RandomStageSetting)(at)
+  lhu v1,lo(RandomStageSetting)(at)
   nop
   bne v1,v0,@@SettingChanged
   
-  lh v1,lo(FPSSetting)(at)
+  lhu v1,lo(FPSSetting)(at)
   lhu v0,0x3092(a0)
   nop
   bne v1,v0,@@SettingChanged
   
-  lh v1,lo(RandomMusicSetting)(at)
+  lhu v1,lo(RandomMusicSetting)(at)
   lhu v0,0x3098(a0)
   nop
   bne v1,v0,@@SettingChanged

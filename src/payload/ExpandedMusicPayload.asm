@@ -5,6 +5,13 @@
 ; s1 + 4 - Starting Sector (need stride added, will bake it) (also needs 0x1844 offset added?)
 ; s1 + 8 - Sector Length
 
+; Music Table
+; Needs to be half word aligned
+; 8 byte entries
+; 4 bytes: starting sector
+; 2 bytes: length in sectors
+; 2 bytes: xa channel
+
 ExpandedMusic:
   ; validate music ID
   slti s0,a1,NumberSongs

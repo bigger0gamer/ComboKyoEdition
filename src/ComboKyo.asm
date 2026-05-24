@@ -16,7 +16,7 @@
 .openfile "../build env/GBA2/SLUS_014.18","../build env/GBA2/TITLE_ID",0x8000F800
 
   ; An easy stand in for the number of custom songs added
-  NumberSongs equ 6
+  NumberSongs equ 63
 
   ; First, we need to start with any data that needs to be modified in SLUS_014.04 itself
   ; Most of this is just jumps into the payload, so you'll want to find the Payload half
@@ -44,7 +44,8 @@
   ; and now, everything inside the payload!
   ; Please note that you can no longer use .org or else you'll fuck the payload up and nothing will build
   ; If you need to give a RAM address a label, put it somewhere before MovePayload.asm
-  .include "payload/StringTablePayload.asm"
+   ExpandedMusicTable: :: .import "payload/musicTablePayload.bin"
+  .include "payload/StringTablePayload.asm"  ; Also contains texture stuff!
   .include "payload/InputFixPayload.asm"
   .include "payload/60fpsPayload.asm"
   .include "payload/RandomStagePayload.asm"

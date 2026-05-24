@@ -59,45 +59,6 @@
 
 
 
-; Music Table
-; Needs to be half word aligned
-; 8 byte entries
-; 4 bytes: starting sector
-; 2 bytes: length in sectors
-; 2 bytes: xa channel
-ExpandedMusicTable:
-
-; Song 1
-.byte 0x39, 0xA3, 0,0
-.byte 0x70, 0x76
-.byte 5,0
-
-; Song 2
-.byte 0x10, 0xA5, 0,0
-.byte 0x40, 0x73
-.byte 4,0
-
-; Song 3
-.byte 0x67, 0xB7, 0,0
-.byte 0xD0, 0x71
-.byte 3,0
-
-; Song 4
-.byte 0xAE, 0xB9, 0,0
-.byte 0xB8, 0x70
-.byte 2,0
-
-; Song 5
-.byte 0xC5, 0xBC, 0,0
-.byte 0xF8, 0x6E
-.byte 1,0
-
-; Song 6
-.byte 0xAC, 0xD6, 0,0
-.byte 0x28, 0x63
-.byte 0,0
-
-
 ; Starting on the half word aligned stuff, then moving onto the unaligned stuff
 ; And now, for a general data table. Mostly used for replacing data in the game's texture tables,
 ; or for replacing the "half" pointers that point to the above string table.

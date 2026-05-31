@@ -5,3 +5,7 @@ mkdir cleanROM
 mv Gundam\ Battle\ Assault\ 2\ \(USA\).cue cleanROM
 mv Gundam\ Battle\ Assault\ 2\ \(USA\)\ \(Track\ 1\).bin cleanROM
 mv Gundam\ Battle\ Assault\ 2\ \(USA\)\ \(Track\ 2\).bin cleanROM
+
+cd GBA2/XA
+xa-deinterleaver CDXA00.XA
+mkdir /GBA2/XA/CDXA00/ext/

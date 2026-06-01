@@ -15,10 +15,14 @@ j @@SaveMusicReplacement
 addi v0,v0,1
 
 @@CharacterMusic:
+lui t0,hi(FrameCounter)
+lw t0,lo(FrameCounter)(t0)
 lui v0,hi(Player2CharacterID)
 lh v0,lo(Player2CharacterID)(v0)
-nop
+andi t0,t0,1
+beq t0,r0,@@SaveMusicReplacement
 addi v0,v0,0xB
+addi v0,v0,34
 
 @@SaveMusicReplacement:
 sh v0,lo(MusicID)(v1)

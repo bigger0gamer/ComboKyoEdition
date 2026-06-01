@@ -44,7 +44,7 @@
   ; and now, everything inside the payload!
   ; Please note that you can no longer use .org or else you'll fuck the payload up and nothing will build
   ; If you need to give a RAM address a label, put it somewhere before MovePayload.asm
-   ExpandedMusicTable: :: .import "payload/musicTablePayload.bin"
+   ExpandedMusicTable: :: .import "payload/MusicTablePayload.bin"
   .include "payload/StringTablePayload.asm"  ; Also contains texture stuff!
   .include "payload/InputFixPayload.asm"
   .include "payload/60fpsPayload.asm"
